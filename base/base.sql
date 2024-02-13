@@ -1,7 +1,7 @@
 
 create database the ;
 
-create or replace table inscription (
+create  table inscription (
    idInscription int AUTO_INCREMENT primary key,
    nom VARCHAR(25), 
    password VARCHAR(100)
@@ -23,7 +23,7 @@ CREATE TABLE parcelle (
     numeroParcelle VARCHAR(50),
     surfaceHectare DECIMAL(10, 2),
     idVariete INT,
-    FOREIGN KEY (idVariete) REFERENCES VarieteThe(idVariete)
+    FOREIGN KEY (idVariete) REFERENCES varieteThe(idVariete)
 );
 
 CREATE TABLE cueilleur (
@@ -43,8 +43,8 @@ CREATE TABLE cueillette (
     idCueilleur INT,
     idParcelle INT,
     poidsCueilli DECIMAL(10, 2),
-    FOREIGN KEY (idCueilleur) REFERENCES Cueilleur(idCueilleur),
-    FOREIGN KEY (idParcelle) REFERENCES Parcelle(idParcelle)
+    FOREIGN KEY (idCueilleur) REFERENCES cueilleur(idCueilleur),
+    FOREIGN KEY (idParcelle) REFERENCES parcelle(idParcelle)
 );
 
 
@@ -58,17 +58,17 @@ CREATE TABLE depense (
 
 create table montantinitial(
     idmontantinitial int AUTO_INCREMENT PRIMARY KEY,
-    montant decimal,
+    montant decimal
 );
  
 CREATE OR REPLACE VIEW poidsCueilliparpersonn AS
-SELECT cueilleur.nomCueilleur, cueillette.idParcelle, cueillette.poidsCueilli
+SELECT cueilleur.nomCueilleur, cueillette.idParcelle, cueillette.poidsCueilli 
 FROM cueillette
 JOIN cueilleur ON cueillette.idCueilleur = cueilleur.idCueilleur;
 
 
 CREATE view varieteparcelle as
-select  parcelle.numeroParcelle , varieteThe.surfaceHectare , varieteThe.nomVariete
+select  parcelle.numeroParcelle , parcelle.surfaceHectare , varieteThe.nomVariete
 from parcelle , varieteThe where  parcelle.idVariete = varieteThe.idVariete
 
 
