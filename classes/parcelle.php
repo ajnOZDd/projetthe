@@ -47,7 +47,7 @@ class parcelle {
         $this->setSurfacehectare($surfacehectare) ;
         $this->setIdvariete($idvariete) ;
         $query= sprintf("INSERT INTO parcelle (nombretotalpiedparparcelle ,numeroParcelle ,surfaceHectare , idVariete) values (%s , %s , %s, %s)", 
-        $this->getNombretotalpiedparparcelle(),$this-> getNumeroparcel() ,$this->getSurfacehectare(), $this->getIdvariete() ) ;
+        (double)$this->getNombretotalpiedparparcelle(),(double)$this-> getNumeroparcel() ,(double)$this->getSurfacehectare(), $this->getIdvariete() ) ;
         return $query ;
     }
 

@@ -9,14 +9,16 @@ class parcellecontroller {
     public function __construct() {
     }    
     
-    public function setparcell (){
+    public function setparcelle(){
       $this->connexion = new connexion() ;
       $con = $this->connexion->default() ;
-      $totalpiedparcelle = $_POST["totalpiedparcelle"];
+      $this->parcelle= new parcelle() ;
+      
+      $totalpiedparcelle= $_POST["totalpiedparcelle"];
       $numeroparcelle =$_POST["numeroparcelle"];
       $surfacehectare = $_POST["surfacehectare"];
-      $idvariete = $_POST["idvariete"];
-      $query =$this->parcelle->addparcel($totalpiedparcelle, $numeroparcelle , $surfacehectare, $idvariete) ;
+      $idvariete= $_POST["idvariete"];
+      $query =$this->parcelle->addparcel($totalpiedparcelle , $numeroparcelle , $surfacehectare , $idvariete) ;
       $prepare=$con->prepare($query) ;
       $prepare->execute() ;
     }

@@ -11,7 +11,7 @@ create  table inscription (
 insert into inscription (nom , password ) value ('admin', 'mande') ;
 
 
-CREATE TABLE varieteThe (
+CREATE TABLE nomVariete (
     idVariete INT AUTO_INCREMENT PRIMARY KEY,
     nomVariete VARCHAR(255),
     occupationParPied DECIMAL(10, 2),

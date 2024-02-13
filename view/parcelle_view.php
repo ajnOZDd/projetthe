@@ -6,11 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="../classes/controllerp" method="post">
-        <input type="number" name="totalpiedparcelle" id="">
-        <input type="number" name="numeroparcelle" id="">
-        <input type="number" name="surfacehectare" id="">
-        <input type="number" name="idvariete" id="">
+    <form action="../classes/controllerc.php" method="post">
+        <input type="text" name="totalpiedparcelle" id=""placeholder="totalpiedparcelle">
+        <input type="text" name="numeroparcelle" id=""placeholder="numeroparcelle">
+        <input type="text" name="surfacehectare" id="" placeholder="surfacehectare">
+        <input type="number" name="idvariete" id=""placeholder = "idvariete">
         <button type="submit">
             ajouter
         </button>

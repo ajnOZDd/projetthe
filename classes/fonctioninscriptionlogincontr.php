@@ -48,7 +48,7 @@ class fonctioninscriptionlogincontr {
             echo $result["nom"] ;
             echo $result["password"] ;
             $_SESSION["getvalue"] = [$result["nom"], $result["password"]] ;
-            header("location:../view/acceuil.php") ;
+            header("location:../view/admin.php") ;
         } else {
            
             echo "Identifiants invalides.";
