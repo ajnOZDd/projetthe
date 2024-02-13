@@ -1,18 +1,18 @@
 <?php
 require "../base/connection.php" ;
 require "../classes/depense.php" ;
-class ceuilleurcontroller{
+class depensecontroller{
     private connexion $connexion ;
     private depense $depense ;
     
-    public function setcueilleur (){
+    public function setdepense (){
         $this->connexion = new connexion() ;
         $con = $this->connexion->default() ;
         $this->depense= new depense () ;
-        $nomcueilleur= $_POST["nomCueilleur"] ;
-        $genreceuilleur = $_POST["genre"] ; 
-        $datenaissance =$_POST["dateNaissance"] ;
-        $query =$this->depense->adddepense($nomcueilleur, $genreceuilleur, $datenaissance) ;
+        $dateDepense= $_POST["dateDepense"] ;
+        $idCategorieDepense = $_POST["idCategorieDepense"] ; 
+        $montant =$_POST["montant"] ;
+        $query =$this->depense->adddepense($dateDepense, $idCategorieDepense, $montant) ;
         $prepare=$con->prepare($query) ;
         $prepare->execute() ;
     }

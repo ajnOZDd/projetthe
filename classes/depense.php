@@ -32,4 +32,17 @@ class depense {
     public function getMontant() {
         return $this->montant;
     }
+
+    public function adddepense ($datedepense ,$idcategoriedepense , $montant){
+            $this->setDatedepense($datedepense) ;
+            $this->setIdcategoriedepense($idcategoriedepense) ;
+            $this->setMontant($montant) ;
+            $query = sprintf(
+            "INSERT INTO cueilleur(nomCueilleur, genre, dateNaissance) values ('%s' , '%s' , '%s')",
+             $this->getDatedepense(),
+             $this->getIdcategoriedepense(),
+             $this->getMontant()
+            );
+            return $query;
+    }
 }
