@@ -2,6 +2,7 @@
 class Connexion {
     private $host;
     private $name;
+    private $query ;
     private $password;
     private $dbname;
 
@@ -48,10 +49,14 @@ class Connexion {
     public function setConnexion() {
         try {
             $dsn = sprintf("mysql:host=%s;dbname=%s", $this->getHost(), $this->getDbname());
-            $query = new PDO($dsn, $this->getName(), $this->getPassword());
-            return $query;
+            $this->query = new PDO($dsn, $this->getName(), $this->getPassword());
+            return $this->query;
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
+    }
+
+    public function closeconnection (){
+        $this->query= null ;
     }
 }

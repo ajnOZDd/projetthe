@@ -1,32 +1,43 @@
-Table VarieteThe :
-CREATE TABLE VarieteThe (
+
+create database the ;
+
+create or replace table inscription (
+   idInscription int AUTO_INCREMENT primary key,
+   nom VARCHAR(25), 
+   password VARCHAR(100)
+);
+
+
+insert into inscription (nom , password ) value ('admin', 'mande') ;
+
+
+CREATE TABLE varieteThe (
     idVariete INT AUTO_INCREMENT PRIMARY KEY,
     nomVariete VARCHAR(255),
     occupationParPied DECIMAL(10, 2),
     rendementParPied DECIMAL(10, 2)
 );
-Table Parcelle :
-CREATE TABLE Parcelle (
+
+CREATE TABLE parcelle (
     idParcelle INT AUTO_INCREMENT PRIMARY KEY,
     numeroParcelle VARCHAR(50),
     surfaceHectare DECIMAL(10, 2),
     idVariete INT,
     FOREIGN KEY (idVariete) REFERENCES VarieteThe(idVariete)
 );
-Table Cueilleur :
-CREATE TABLE Cueilleur (
+
+CREATE TABLE cueilleur (
     idCueilleur INT AUTO_INCREMENT PRIMARY KEY,
     nomCueilleur VARCHAR(100),
-    genre ENUM('M', 'F'),
+    genre VARCHAR(7),
     dateNaissance DATE
 );
-Table CategorieDepense :
-CREATE TABLE CategorieDepense (
+CREATE TABLE categorie (
     idCategorieDepense INT AUTO_INCREMENT PRIMARY KEY,
     nomCategorie VARCHAR(100)
 );
-Table Cueillette :
-CREATE TABLE Cueillette (
+
+CREATE TABLE cueillette (
     idCueillette INT AUTO_INCREMENT PRIMARY KEY,
     dateCueillette DATE,
     idCueilleur INT,
@@ -35,11 +46,29 @@ CREATE TABLE Cueillette (
     FOREIGN KEY (idCueilleur) REFERENCES Cueilleur(idCueilleur),
     FOREIGN KEY (idParcelle) REFERENCES Parcelle(idParcelle)
 );
-Table Depense :
-CREATE TABLE Depense (
+
+
+CREATE TABLE depense (
     idDepense INT AUTO_INCREMENT PRIMARY KEY,
     dateDepense DATE,
     idCategorieDepense INT,
     montant DECIMAL(10, 2),
     FOREIGN KEY (idCategorieDepense) REFERENCES CategorieDepense(idCategorieDepense)
 );
+
+create table montantinitial(
+    idmontantinitial int AUTO_INCREMENT PRIMARY KEY,
+    montant decimal,
+);
+ 
+CREATE OR REPLACE VIEW poidsCueilliparpersonn AS
+SELECT cueilleur.nomCueilleur, cueillette.idParcelle, cueillette.poidsCueilli
+FROM cueillette
+JOIN cueilleur ON cueillette.idCueilleur = cueilleur.idCueilleur;
+
+
+CREATE view varieteparcelle as
+select  parcelle.numeroParcelle , varieteThe.surfaceHectare , varieteThe.nomVariete
+from parcelle , varieteThe where  parcelle.idVariete = varieteThe.idVariete
+
+

@@ -8,6 +8,7 @@ class cueilleur {
     public function __construct() {
     }
     public function addceuilleure (){
-        $connexion = new connexion()
+       
     }
+
 }
