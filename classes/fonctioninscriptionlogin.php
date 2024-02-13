@@ -6,13 +6,13 @@ class fonctioninscriptionlogincontr {
     private connexion $connexion ;
     private personn $personn ;
     public function __construct() {
-        $this->connexion = new connexion("172.20.0.167", "db_p16_ETU002636", "ETU002636", "82QLFCPJGlxS") ;
+        $this->connexion = new connexion() ;
         
     }
 
     public function testco (){
         try {
-        $con=$this->connexion->setConnexion() ;
+        $con=$this->connexion->default();
             
         } catch (PDOException $th) {
             echo $th->getMessage();
@@ -25,7 +25,7 @@ class fonctioninscriptionlogincontr {
             $motdepasse= $_POST["passwordinscription"] ; 
             if ($nom!="" && $motdepasse!=""){
                 $this->personn = new personn ()  ;
-                $con=$this->connexion->setConnexion() ;
+                $con=$this->connexion->default() ;
                 $query=$this->personn->addpersonn($nom, $motdepasse) ;
                 $prepare=$con->prepare($query) ;
                 $prepare->execute() ;
@@ -37,7 +37,7 @@ class fonctioninscriptionlogincontr {
         $nomlogin = $_POST["nomlogin"];
         $mdp = $_POST["passwordlogin"];
     
-        $con = $this->connexion->setConnexion();
+        $con = $this->connexion->default();
         $query = sprintf("SELECT * FROM inscription WHERE nom = '%s' AND password = '%s'", $nomlogin, $mdp);
         $prepare = $con->prepare($query);
         $prepare->execute();
@@ -48,7 +48,7 @@ class fonctioninscriptionlogincontr {
             echo $result["nom"] ;
             echo $result["password"] ;
             $_SESSION["getvalue"] = [$result["nom"], $result["password"]] ;
-            header("location:../view/admin.php") ;
+            header("location:../view/acceuil.php") ;
         } else {
            
             echo "Identifiants invalides.";

@@ -1,15 +1,12 @@
 <?php
-class parcel {
+class parcelle {
     private $nombretotalpiedparparcelle;
     private $numeroparcel;
     private $surfacehectare;
     private $idvariete;
 
-    public function __construct($nombretotalpiedparparcelle , $numeroparcel , $surfacehectare , $idvariete ) {
-        $this->setNombretotalpiedparparcelle($nombretotalpiedparparcelle) ;
-        $this->setNumeroparcel($numeroparcel) ;
-        $this->setSurfacehectare($surfacehectare) ;
-        $this->setIdvariete($idvariete) ;
+    public function __construct() {
+        
     }
 
     public function setNombretotalpiedparparcelle($nombretotalpiedparparcelle) {
@@ -44,7 +41,11 @@ class parcel {
         return $this->idvariete;
     }
 
-    public function addparcel (){
+    public function addparcel ($nombretotalpiedparparcelle , $numeroparcel , $surfacehectare , $idvariete){
+        $this->setNombretotalpiedparparcelle($nombretotalpiedparparcelle) ;
+        $this->setNumeroparcel($numeroparcel) ;
+        $this->setSurfacehectare($surfacehectare) ;
+        $this->setIdvariete($idvariete) ;
         $query= sprintf("INSERT INTO parcelle (nombretotalpiedparparcelle ,numeroParcelle ,surfaceHectare , idVariete) values (%s , %s , %s, %s)", 
         $this->getNombretotalpiedparparcelle(),$this-> getNumeroparcel() ,$this->getSurfacehectare(), $this->getIdvariete() ) ;
         return $query ;

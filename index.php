@@ -60,7 +60,7 @@
         <img src="assets/images/vape.png" class="animation">
         <div class="zero">
             <h2>CONNECTER-VOUS</h2>
-            <form action="../classes/controllerinscriptionlogin.php" method="post">
+            <form action="../classes/controllerp.php" method="post">
                 <div class="un">
 
 

@@ -6,6 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form action="../classes/controllerp" method="post">
+        <input type="number" name="totalpiedparcelle" id="">
+        <input type="number" name="numeroparcelle" id="">
+        <input type="number" name="surfacehectare" id="">
+        <input type="number" name="idvariete" id="">
+        <button type="submit">
+            ajouter
+        </button>
+    </form>
 </body>
 </html>

@@ -23,6 +23,7 @@ CREATE TABLE parcelle (
     numeroParcelle VARCHAR(50),
     surfaceHectare DECIMAL(10, 2),
     idVariete INT,
+    nombretotalpiedparparcelle int,
     FOREIGN KEY (idVariete) REFERENCES varieteThe(idVariete)
 );
 

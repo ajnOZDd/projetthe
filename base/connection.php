@@ -6,12 +6,8 @@ class Connexion {
     private $password;
     private $dbname;
 
-    public function __construct($host, $dbname, $name, $password) {
-        $this->setName($name);
-        $this->setHost($host);
-        $this->setPassword($password);
-        $this->setDbname($dbname);
-        $this->setConnexion();
+    public function __construct() {
+       
     }
 
     public function setName($name) {
@@ -46,7 +42,11 @@ class Connexion {
         return $this->password;
     }
 
-    public function setConnexion() {
+    public function setConnexion($host, $dbname, $name, $password) {
+        $this->setName($name);
+        $this->setHost($host);
+        $this->setPassword($password);
+        $this->setDbname($dbname);
         try {
             $dsn = sprintf("mysql:host=%s;dbname=%s", $this->getHost(), $this->getDbname());
             $this->query = new PDO($dsn, $this->getName(), $this->getPassword());
@@ -55,8 +55,18 @@ class Connexion {
             echo $e->getMessage();
         }
     }
-
-    public function closeconnection (){
-        $this->query= null ;
-    }
+    public function default(){
+        $this->setHost("172.20.0.167") ;
+        $this->setDbname("db_p16_ETU002636") ;
+        $this->setName("ETU002636") ;
+        $this->setPassword("82QLFCPJGlxS") ;
+        try {
+            $dsn = sprintf("mysql:host=%s;dbname=%s", $this->getHost(), $this->getDbname());
+            $this->query = new PDO($dsn, $this->getName(), $this->getPassword());
+            return $this->query;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    } 
+  
 }

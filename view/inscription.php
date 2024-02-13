@@ -55,7 +55,7 @@
      <img src="../assets/images/cana.png" class="animation">
     <div class="zero">
         <h1>INSCRIPTION</h1>
-    <form action="../classes/controllerinscriptionlogin.php" method="post">
+    <form action="../classes/controllerp.php" method="post">
 
         <div class="form-group">
             <label for="nom">Nom</label>
