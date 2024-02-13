@@ -1,4 +1,5 @@
 <?php
+session_start() ;
 require "../base/connection.php" ;
 require "../classes/personn.php" ;
 class fonctioninscriptionlogincontr {
@@ -34,28 +35,23 @@ class fonctioninscriptionlogincontr {
 
     public function getinscriptioncontroller() {
         $nomlogin = $_POST["nomlogin"];
-        $mdp = $_POST["motdepasselogin"];
+        $mdp = $_POST["passwordlogin"];
     
-        if (!empty($nomlogin) && !empty($mdp)) {
-            $con = $this->connexion->setConnexion();
+        $con = $this->connexion->setConnexion();
+        $query = sprintf("SELECT * FROM inscription WHERE nom = '%s' AND password = '%s'", $nomlogin, $mdp);
+        $prepare = $con->prepare($query);
+        $prepare->execute();
     
-            $personn = new personn();
-            $checkQuery = $personn->checkpersonn($nomlogin, $mdp);
-            $checkPrepare = $con->prepare($checkQuery);
-            $checkPrepare->execute();
+        $result = $prepare->fetch(PDO::FETCH_ASSOC);
     
-            $rowCount = $checkPrepare->fetchColumn();
-    
-            if ($rowCount > 0) {
-                $query = $personn->selectpersonn($nomlogin, $mdp);
-                $prepare = $con->prepare($query);
-                $prepare->execute();
-    
-            } else {
-                echo "Nom de connexion ou mot de passe incorrect.";
-            }
+        if ($result) {
+            echo $result["nom"] ;
+            echo $result["password"] ;
+            $_SESSION["getvalue"] = [$result["nom"], $result["password"]] ;
+            header("location:../view/admin.php") ;
         } else {
-            echo "Veuillez fournir un nom de connexion et un mot de passe.";
+           
+            echo "Identifiants invalides.";
         }
     }
 

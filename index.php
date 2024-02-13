@@ -53,31 +53,31 @@
 </head>
 
 <body>
-
+<p>nom: admin</p>
+<p>mot de passer :mande</p>
 
     <div>
         <img src="assets/images/vape.png" class="animation">
         <div class="zero">
             <h2>CONNECTER-VOUS</h2>
-            <form action="" method="post">
+            <form action="../classes/controllerinscriptionlogin.php" method="post">
                 <div class="un">
 
 
                     <div class="form-group">
-                        <label for="email">nom</label>
-                        <input type="mail" id="email" name="email" placeholder="veuiller entrer votre nom" required>
+                        <label for="nom">nom</label>
+                        <input type="text" id="nomlogin" name="nomlogin" placeholder="veuiller entrer votre nom" required>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Mot de Passe</label>
-                        <input type="password" id="password" name="password" placeholder="Valider votre mode paase" required>
+                        <input type="password" id="passwordlogin" name="passwordlogin" placeholder="Valider votre mode paase" required>
                     </div>
 
                     <div class="form-group">
-                        <p><a href="index.php" class="btn btn-primary">Se connecter</a></p>
+                        <button type="submit"> connection</button>
                     </div>
 
-                    <a href="view/inscription.php"> inscription ici</a>
 
             </form>
         </div>

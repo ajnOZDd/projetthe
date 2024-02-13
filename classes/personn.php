@@ -8,7 +8,7 @@ class personn{
     
     public function selectpersonn ($nom , $motdepasse){
         if ($nom !="" && $motdepasse!=""){
-            $query = sprintf("select %s, %s from inscription", $nom , $motdepasse) ;
+            $query = sprintf("SELECT %s %s from inscription", $nom , $motdepasse) ;
             return $query ;
         }
             return "" ;
@@ -20,7 +20,5 @@ class personn{
         }
         return "";
     }
-    public function deletepersonn (){
-
-    }
+    
 }
